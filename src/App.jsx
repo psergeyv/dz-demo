@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Head from './components/Head/Head'
 import Button from './components/Button/Button' 
 import Paragraph from './components/Paragraph/Paragraph';
