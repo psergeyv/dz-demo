@@ -12,7 +12,7 @@ function App() {
         <Head>Поиск</Head>
       </div>
       <div className='search-block'>
-        <Button>Поиск</Button>
+        <Button>Найти</Button>
       </div>
       <div className='text-block'>
         <Paragraph cssstyle='paragraph normal'
