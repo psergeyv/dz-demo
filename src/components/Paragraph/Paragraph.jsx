@@ -1,8 +1,8 @@
 import './Paragraph.css'
-function Paragraph() { 
+function Paragraph({cssstyle, text}) { 
 	return (
 		<>
-			<p className='paragraph normal'>Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.</p>
+			<p className={cssstyle}>{text}</p>
 		</>
 	)
 }

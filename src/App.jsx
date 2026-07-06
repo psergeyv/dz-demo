@@ -15,7 +15,8 @@ function App() {
         <Button>Поиск</Button>
       </div>
       <div className='text-block'>
-        <Paragraph cssstyle='normal'>Поиск</Paragraph>
+        <Paragraph cssstyle='paragraph normal'
+					text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'/>
       </div>
     </>
   )
