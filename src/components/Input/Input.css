@@ -1,0 +1,32 @@
+.default-input {
+    width: 100%;
+    border: 1px solid #323B54;
+    border-radius: 12px;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+.search-input {
+    z-index: 1;
+    width: 100%;
+    border: 1px solid #323B54;
+    border-radius: 12px;
+    height: 64px;
+    position: relative;
+    padding-left: 45px;
+    background-color: rgba(0, 0, 0, 0.10);
+}
+
+span.search-icon-input {
+    z-index: 2;
+    position: absolute;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    background: url("/search.svg") no-repeat center center;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+}

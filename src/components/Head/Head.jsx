@@ -1,8 +1,8 @@
 import './Head.css'
-function Head() { 
+function Head({title}) { 
 	return (
 		<>
-			<h1 className='header h1'>Поиск</h1>
+			<h1 className='head h1'>{title}</h1>
 		</>
 	)
 }
