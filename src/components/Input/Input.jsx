@@ -1,12 +1,18 @@
-import './Input.css'
+import st from './Input.module.css'
+import cn from 'classnames';
+
 function Input({ name, icon: Icon, type,placeholder, style: Style, }) { 
+	
+	const clName = Style ? cn(st[Style], st['default-input']) : st['default-input'];
+	const clIcon = Icon ? cn(st[Icon]) : false;
+	
 	return (
 		<>
-			{Icon && (
-				<span className={Icon}></span>
+			{clIcon && (
+				<span className={clIcon}></span>
 			)}
 			<input name={name} type={type} placeholder={placeholder} 
-				className={Style ? Style : 'default-input'}/>
+				className={clName}/>
 		</>
 	)
 }

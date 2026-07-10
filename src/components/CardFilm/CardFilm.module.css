@@ -1,0 +1,51 @@
+.item-film {
+    background-color: rgba(32, 40, 62, 0.8);
+    border-radius: 12px;
+    padding: 8px;
+    max-width: 282px;
+}
+
+.item-film-image {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.item-film-image .item-film-image-stars {
+    display: flex;
+    gap: 4px;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: rgba(255, 173, 73, 1);
+    border-radius: 8px;
+    padding: 0 8px;
+    height: 32px;
+    align-items: center;
+}
+
+.item-film-image .item-film-image-stars img {
+    width: 16px;
+}
+
+.item-film-title {
+    font-size: 16px;
+    color: rgba(235, 238, 245, 1);
+    padding: 24px 8px;
+}
+
+.item-film-favorite {
+    font-size: 16px;
+    padding: 0 8px 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(123, 110, 246, 1);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.item-film-favorite img {
+    width: 24px;
+}

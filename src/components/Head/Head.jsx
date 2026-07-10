@@ -1,8 +1,10 @@
-import './Head.css'
+import st from './Head.module.css'
+import cn from 'classnames';
 function Head({title}) { 
+	const clName = cn(st['head'], st['h1']);
 	return (
 		<>
-			<h1 className='head h1'>{title}</h1>
+			<h1 className={clName}>{title}</h1>
 		</>
 	)
 }
