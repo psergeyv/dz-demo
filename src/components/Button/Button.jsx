@@ -1,9 +1,12 @@
-import './Button.css'
+import st from './Button.module.css'
+import cn from 'classnames';
 
 function Button({title, type: Typebtn }) { 
+	const clName = cn(st['button'], st['search']);
+
 	return (
 		<>
-			<button className='button search' type={Typebtn ? Typebtn : 'button'}>{title}</button>
+			<button className={clName} type={Typebtn ? Typebtn : 'button'}>{title}</button>
 		</>
 	)
 }

@@ -17,7 +17,7 @@
     background-color: rgba(0, 0, 0, 0.10);
 }
 
-span.search-icon-input {
+.search-icon-input {
     z-index: 2;
     position: absolute;
     left: 16px;

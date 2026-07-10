@@ -50,7 +50,7 @@ function App() {
 			<div className='layout'>
 				<Head title="Поиск"/>
 			
-				<Paragraph cssstyle='paragraph normal'
+				<Paragraph cssstyle='normal'
 					text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'/>			
 				<FormSearch />
 			</div>

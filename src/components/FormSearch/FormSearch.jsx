@@ -1,10 +1,11 @@
-import './FormSearch.css';
+import st from './FormSearch.module.css'
+
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 
 
 function FormSearch() { 	
-
+	
 	const formSubmit = (event) => {
 		event.preventDefault(); // Останавливает перезагрузку страницы
 		console.log('Форма отправлена');
@@ -12,10 +13,10 @@ function FormSearch() {
 	return (
         
 		<form onSubmit={formSubmit}>
-			<div className='search-line'>
-				<Input name="icon-container search" 
-					icon='search-icon-input'                    
-					type='text' 					
+			<div className={st['search-line']}>
+				<Input name='search' 
+					icon="search-icon-input"
+					type="text" 					
 					placeholder="Введите название"
 					style="search-input"/>
 				<Button title="Искать" type='submit'/>

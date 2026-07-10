@@ -1,9 +1,9 @@
-import './ListFilms.css';
-
+import st from './ListFilms.module.css'
+import cn from 'classnames';
 import CardFilm from '../CardFilm/CardFilm';
 
 function ListFilms({items}) { 	
-
+	const clName = cn(st['list-films']);
 	const sortItems = (a, b) => {
 		if (a.id < b.id) {
 			return 1;
@@ -22,7 +22,7 @@ function ListFilms({items}) {
 		))
 	};
 	return (
-		<div className='list-films'>			
+		<div className={clName}>			
 			{list}			
 		</div>		
 	)
