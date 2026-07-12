@@ -1,8 +1,8 @@
 import st from './Button.module.css'
 import cn from 'classnames';
-import { forwardRef } from "react";
 
-const Button = forwardRef(function Button({className, title, appearence, ...props}, ref) { 	
+
+function Button({className, title, appearence, ref, ...props}) { 	
 
 	return (
 		<>
@@ -11,7 +11,7 @@ const Button = forwardRef(function Button({className, title, appearence, ...prop
 				[st['search']]: appearence === 'search',				
 			})}>{title}</button>
 		</>
-	)
-});
+	);
+}
 
 export default Button

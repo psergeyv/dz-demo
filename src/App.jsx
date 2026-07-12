@@ -6,7 +6,7 @@ import ListFilms from './components/ListFilms/ListFilms';
 import {useLocalStorage} from './hooks/use-localstorage.hook'
 import './App.css'
 import FormLogin from './components/FormLogin/FormLogin';
-import { useState, useEffect } from "react";
+import {UserContextProvider} from './context/user.context';
 
 const FILMS_DATA = [
 	{
@@ -91,7 +91,7 @@ function App() {
 	
 
 	return (
-		<>
+		<UserContextProvider>
 			<Header user={currentLoggedUser} onClick={handleLogout} />
 			<div className='layout'>
 				<Head title="Поиск"/>
@@ -102,7 +102,7 @@ function App() {
 				<FormLogin onSubmit={loginUser}/>
 			</div>
 			<ListFilms items = {FILMS_DATA} />
-		</>
+		</UserContextProvider>
 	)
 }
 

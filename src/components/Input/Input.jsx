@@ -1,8 +1,8 @@
 import st from './Input.module.css'
 import cn from 'classnames';
-import { forwardRef } from "react";
 
-const Input = forwardRef(function Input({className, isValid=true, icon=false, appearence, ...props}, ref) {		
+
+function Input({className, isValid=true, icon=false, appearence, ref, ...props}) {		
 	const clIcon = icon ? cn(st[icon]) : false;
 	//console.log(isValid);
 	return (
@@ -18,7 +18,7 @@ const Input = forwardRef(function Input({className, isValid=true, icon=false, ap
 			})} />
 		</>
 	)
-});
+};
 
 
 export default Input
