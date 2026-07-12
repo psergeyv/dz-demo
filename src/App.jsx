@@ -41,21 +41,21 @@ function searchItem() {
 
 
 function App() {
-	//const [items, setFilms] = useState(FILMS_DATA);
-
-	/*const addFilm = item => {
-		setFilms(oldItems => [...oldItems,{
-			text:item.text,
-			title:item.title,
-			date:new Date(item.date),
-			id: oldItems.length > 0 ? Math.max(...oldItems.map(i => i.id)) + 1 : 1,
-		}]);
-	};*/
+	
 	
 	const [profiles, setProfiles] = useLocalStorage('profiles', []);	
 	const currentLoggedUser = profiles?.find?.(p => p && p.isLogined === true);
 	
-
+	const handleLogout = () => {
+		console.log('asdas');
+		const safeProfiles = Array.isArray(profiles) ? profiles : [];
+		const updatedProfiles = safeProfiles.map(pr => 
+			pr.name?.toLowerCase() === currentLoggedUser.name
+				? { ...pr, isLogined: !pr.isLogined } 
+				: pr
+		);
+		setProfiles(updatedProfiles);
+	};
 	const loginUser = (item) => {
 		const targetName = item.name.toLowerCase();
 		// Гарантируем, что profiles — это массив, чтобы избежать ошибки .some()
@@ -92,7 +92,7 @@ function App() {
 
 	return (
 		<>
-			<Header user={currentLoggedUser} />
+			<Header user={currentLoggedUser} onClick={handleLogout} />
 			<div className='layout'>
 				<Head title="Поиск"/>
 			

@@ -1,8 +1,8 @@
 import st from './Header.module.css'
 import cn from 'classnames';
 
-function Header({user}) {
-	console.log(user);
+function Header({user, onClick}) {
+	
 	const clName = cn(st['header']); 
 	if (user) {
 		return (
@@ -14,8 +14,8 @@ function Header({user}) {
 					<a href="">Поиск фильмов</a>
 					<a href="">Мои фильмы <span className={st['header-menu-count']}>0</span></a>
 				
-					<a href="">Выйти {user.name}
-						<img src="/login.svg" alt="Войти" />
+					<a href="" onClick={onClick}>Выйти {user.name}
+						<img src="/login.svg" alt="Выйти" />
 					</a>
 				</div>
 			</div>
