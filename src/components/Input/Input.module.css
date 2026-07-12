@@ -4,6 +4,7 @@
     border-radius: 12px;
     height: 64px;
     background-color: rgba(0, 0, 0, 0.10);
+    outline: none;
 }
 
 .search-input {
@@ -15,6 +16,7 @@
     position: relative;
     padding-left: 45px;
     background-color: rgba(0, 0, 0, 0.10);
+    outline: none;
 }
 
 .search-icon-input {
@@ -29,4 +31,20 @@
     color: #fff;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.login-input {
+    width: 100%;
+    border: 1px solid #323B54;
+    border-radius: 12px;
+    height: 64px;
+    position: relative;
+    padding: 0px 16px;
+    background-color: rgba(0, 0, 0, 0.10);
+    outline: none;
+}
+
+.invalid {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.05);
 }
