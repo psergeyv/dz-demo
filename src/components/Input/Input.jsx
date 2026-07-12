@@ -1,20 +1,24 @@
 import st from './Input.module.css'
 import cn from 'classnames';
 
-function Input({ name, icon: Icon, type,placeholder, style: Style, }) { 
-	
-	const clName = Style ? cn(st[Style], st['default-input']) : st['default-input'];
-	const clIcon = Icon ? cn(st[Icon]) : false;
-	
+
+function Input({className, isValid=true, icon=false, appearence, ref, ...props}) {		
+	const clIcon = icon ? cn(st[icon]) : false;
+	//console.log(isValid);
 	return (
 		<>
-			{clIcon && (
+	    	{clIcon && (
 				<span className={clIcon}></span>
 			)}
-			<input name={name} type={type} placeholder={placeholder} 
-				className={clName}/>
+
+			<input {...props} ref={ref} className={cn(className, st['default-input'], {				
+				[st['search-input']]: appearence === 'search',
+				[st['login-input']]: appearence === 'login',
+				[st['invalid']]: !isValid
+			})} />
 		</>
 	)
-}
+};
+
 
 export default Input

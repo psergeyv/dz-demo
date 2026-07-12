@@ -3,8 +3,10 @@ import Head from './components/Head/Head'
 import FormSearch from './components/FormSearch/FormSearch'
 import Paragraph from './components/Paragraph/Paragraph';
 import ListFilms from './components/ListFilms/ListFilms';
-//import { useState } from 'react';
+import {useLocalStorage} from './hooks/use-localstorage.hook'
 import './App.css'
+import FormLogin from './components/FormLogin/FormLogin';
+import {UserContextProvider} from './context/user.context';
 
 const FILMS_DATA = [
 	{
@@ -32,30 +34,75 @@ const FILMS_DATA = [
 		stars: 123
 	}
 ];
-function App() {
-	//const [items, setFilms] = useState(FILMS_DATA);
+function searchItem() {
+	console.log('Поиск начат');
+};
 
-	/*const addFilm = item => {
-		setFilms(oldItems => [...oldItems,{
-			text:item.text,
-			title:item.title,
-			date:new Date(item.date),
-			id: oldItems.length > 0 ? Math.max(...oldItems.map(i => i.id)) + 1 : 1,
-		}]);
-	};*/
+
+
+function App() {
+	
+	
+	const [profiles, setProfiles] = useLocalStorage('profiles', []);	
+	const currentLoggedUser = profiles?.find?.(p => p && p.isLogined === true);
+	
+	const handleLogout = () => {
+		console.log('asdas');
+		const safeProfiles = Array.isArray(profiles) ? profiles : [];
+		const updatedProfiles = safeProfiles.map(pr => 
+			pr.name?.toLowerCase() === currentLoggedUser.name
+				? { ...pr, isLogined: !pr.isLogined } 
+				: pr
+		);
+		setProfiles(updatedProfiles);
+	};
+	const loginUser = (item) => {
+		const targetName = item.name.toLowerCase();
+		// Гарантируем, что profiles — это массив, чтобы избежать ошибки .some()
+		const safeProfiles = Array.isArray(profiles) ? profiles : [];
+		
+		
+		
+		const userExists = safeProfiles.some(p => p.name?.toLowerCase() === targetName);
+		
+		if (userExists) {
+			// 1. Создаем обновленный массив для существующего юзера
+			const updatedProfiles = safeProfiles.map(pr => 
+				pr.name?.toLowerCase() === targetName
+					? { ...pr, isLogined: !pr.isLogined } 
+					: pr
+			);
+			setProfiles(updatedProfiles);
+		} else {
+			// 2. Рассчитываем ID на основе текущего safeProfiles
+			const nextId = safeProfiles.length > 0 ? Math.max(...safeProfiles.map(i => i.id)) + 1 : 1;
+			
+			const newUser = {			
+				id: nextId,
+				name: item.name,
+				isLogined: true,			
+			};
+
+			// 3. Добавляем нового пользователя СВЕРХУ (в начало массива), 
+			// разворачивая за ним старых пользователей БЕЗ всяких функций mapItems
+			setProfiles([newUser, ...safeProfiles]);
+		}
+	};
+	
 
 	return (
-		<>
-			<Header/>
+		<UserContextProvider>
+			<Header user={currentLoggedUser} onClick={handleLogout} />
 			<div className='layout'>
 				<Head title="Поиск"/>
 			
 				<Paragraph cssstyle='normal'
 					text='Введите название фильма, сериала или мультфильма для поиска и добавления в избранное.'/>			
-				<FormSearch />
+				<FormSearch onSubmit={searchItem} />
+				<FormLogin onSubmit={loginUser}/>
 			</div>
 			<ListFilms items = {FILMS_DATA} />
-		</>
+		</UserContextProvider>
 	)
 }
 
