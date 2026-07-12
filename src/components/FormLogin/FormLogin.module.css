@@ -1,0 +1,8 @@
+.login-line {
+    display: flex;
+    gap: 27px;
+    width: 100%;
+    position: relative;
+    margin-top: 24px;
+    flex-direction: column;
+}
